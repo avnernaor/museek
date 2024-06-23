@@ -1,123 +1,70 @@
-# Starter Kit
+# Getting Started with Create React App
 
-This is a Starter Kit for the Digital Product Jam course. It provides a configuration of the [Next.js](https://nextjs.org/) framework, and a number of examples of common patterns and components.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-See [the course reference materials for frameworks](https://github.com/digital-product-jam-2024/course/blob/main/reference/frameworks.md) for futher reading on Next.js and React, and in general, other [reference materials](https://github.com/digital-product-jam-2024/course/tree/main/reference) to help you with various technologies and aspects of web development.
+## Available Scripts
 
-# How to use the Starter Kit
+In the project directory, you can run:
 
-First up, you should be using GitHub's template functionality to create your own code repository using this repository as a starting point. [See ther GitHub documentation on creating a repository from a template](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template).
+### `yarn start`
 
-Once you have created your own repository from this template, you can use Git to clone the repository to your local machine. See our [reference material on Git for further details](https://github.com/digital-product-jam-2024/course/blob/main/reference/git.md).
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-When you have a local copy of your repository, you can proceed with the next steps in this document.
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
-# Getting Started
+### `yarn test`
 
-Ensure you have a local copy of the repository, and, in your terminal, navigate to the root of the repository.
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-## Install the dependencies
+### `yarn build`
 
-The codebase has libraries it depends on to run - these are refered to as "dependencies". You need to install these dependencies before you can run the codebase. To install the dependencies, run the following command in your terminal:
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-```bash
-npm install
-```
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-## Configure local environment variables
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-See the section on environment variables below for more explanation on this step. For now, just run the command from the root of the project.
+### `yarn eject`
 
-```bash
-cp .env.local.template .env.local
-```
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-Then, open the `.env.local` file in your code editor, and update the values with real data. We can provide some configuration for you for ease of use - we will update in class.
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-## Run the development server
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-The codebase uses a development server to run the code. This is a server that runs on your local machine, and allows you to view the code in your browser. To run the development server, run the following command in your terminal:
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-```bash
-npm run dev
-```
+## Learn More
 
-# View the application in your browser
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-Once the server is running, you can view the application in your browser. To do this, open Chrome (or Chromium), and type the following into the address bar:
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-```bash
-http://localhost:3000
-```
+### Code Splitting
 
-# Other commands you can run
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-The codebase is set up with a number of commands you can run. These are defined in the `package.json` file, in the `scripts` section. The following are available:
+### Analyzing the Bundle Size
 
-**Lint your code to detect style and some syntax errors**
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-```bash
-npm run lint
-```
+### Making a Progressive Web App
 
-**Compile a production build of your app**
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-```bash
-npm run build
-```
+### Advanced Configuration
 
-**Run the compiled production build of the server**
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-```bash
-npm run start
-```
+### Deployment
 
-**Print out some system info related to your server**
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-```bash
-npm run info
-```
+### `yarn build` fails to minify
 
-# Environment variables
-
-Environment variables provide a way to pass configuration to your application without including configuration values directly in the codebase. This is useful for things like API keys, or other sensitive information that you don't want to be publicly available.
-
-- [Read about Environment variables in Next.js and Vercel here](https://nextjs.org/docs/pages/building-your-application/configuring/environment-variables)
-- [See this video we created on Environment variables](https://youtu.be/f4sXU4d3Zd8)
-
-# Helpers
-
-## CSS Debug
-
-Whent he Environment Variable `CSS_DEBUG` is set to `css_debug`, then additional visual outlines will appear in the UI to help you debug CSS issues.
-
-# Demos
-
-Go to the demos page on the running app to use the demos. The demos are provided to provide real examples of common patterns and components. You can use these as a starting point for your own work.
-
-## Contact Form
-
-This demonstrates how to implement an HTML form. Several fundamental concepts are demonstrated here:
-
-- Using a react component to render a form
-- Using the browser's native form validation
-- Overriding the default submit behaviour of a form in JavaScript
-- Using the `fetch` API to send form data to a server
-- Implementing a server API endpoint to receive data from the form
-- Sending an email with information from the form
-- After handling the data and the email on the server, responding back to the client with a status message
-
-If you understand this example well, you have a good start on most of the fundamentals of web development.
-
-## Random Team Generator
-
-This is a full app that builds random teams and product ideas out of this year's students! It demonstrates the following concepts:
-
-- Working with data in a database
-- Managing UI state with an ad hoc state machine
-- Running almost all code on the client (see usage of 'use client' throughout)
-- Right-to-left (RTL) layout for Hebrew
-- Nested component organization
-- Logic in Javascript for the "business rules" of the application (shuffling, picking from remaining students, etc.)
-
-Review the other demos before reviewing this one.
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

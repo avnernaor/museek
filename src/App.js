@@ -5,7 +5,7 @@ import Register from "./pages/register/Register";
 import ChatPage from "./pages/chat/ChatPage";
 
 function App() {
-  return <Home/>;
+  return <Login/>;
 }
 
 export default App;

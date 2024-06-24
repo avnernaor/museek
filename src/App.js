@@ -4,8 +4,18 @@ import Profile from "./pages/profile/Profile";
 import Register from "./pages/register/Register";
 import ChatPage from "./pages/chat/ChatPage";
 
-function App() {
-  return <Login/>;
-}
 
-export default App;
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import OnBoarding1 from './pages/on_boarding/OnBoarding';
+
+export default function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Register />} />
+        <Route path="/onboarding" element={<OnBoarding1 />} />
+      </Routes>
+    </Router>
+  );
+}

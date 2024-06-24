@@ -1,5 +1,7 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import { auth, provider, signInWithPopup } from '../../firebase-config'; // Update the path as needed
 
 const RegisterContainer = styled.div`
   width: 100vw;
@@ -43,7 +45,7 @@ const RegisterDesc = styled.span`
 `;
 
 const RegisterBox = styled.div`
-  height: 400px;
+  height: 450px; /* Increased height to accommodate Google button */
   padding: 20px;
   background-color: #f5f5f5; /* Light brownish background */
   border-radius: 10px;
@@ -94,7 +96,43 @@ const RegisterRegisterButton = styled.button`
   cursor: pointer;
 `;
 
+const GoogleButton = styled.button`
+  height: 50px;
+  border-radius: 10px;
+  border: none;
+  background-color: #db4437; /* Google red background */
+  color: white;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+`;
+
+const GoogleIcon = styled.img`
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+`;
+
 export default function Register() {
+  const navigate = useNavigate();
+
+  const handleGoogleSignIn = () => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        console.log(result.user);
+        // Redirect to onboarding page
+        navigate('/onboarding');
+      })
+      .catch((error) => {
+        console.error(error);
+        // Handle errors here
+      });
+  };
+
   return (
     <RegisterContainer>
       <RegisterWrapper>
@@ -114,6 +152,10 @@ export default function Register() {
             <RegisterRegisterButton>
               Log into Account
             </RegisterRegisterButton>
+            <GoogleButton onClick={handleGoogleSignIn}>
+              <GoogleIcon src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
+              Sign in with Google
+            </GoogleButton>
           </RegisterBox>
         </RegisterRight>
       </RegisterWrapper>

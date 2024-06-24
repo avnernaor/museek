@@ -1,8 +1,10 @@
-import React from 'react';
+// Share.jsx
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { PermMedia, Label, Room, EmojiEmotions } from '@mui/icons-material';
 import MusicNoteIcon from '@mui/icons-material/MusicNote';
 import NotesIcon from '@mui/icons-material/Notes';
+import UploadDialog from '../uploadDialog/UploadDialog';
 
 // Define styled components
 const ShareContainer = styled.div`
@@ -85,6 +87,27 @@ const ShareButton = styled.button`
 `;
 
 export default function Share() {
+  const [pdfOpen, setPdfOpen] = useState(false);
+  const [mp3Open, setMp3Open] = useState(false);
+
+  const handlePdfOpen = () => {
+    setPdfOpen(true);
+  };
+
+  const handleMp3Open = () => {
+    setMp3Open(true);
+  };
+
+  const handleClose = () => {
+    setPdfOpen(false);
+    setMp3Open(false);
+  };
+
+  const handleUpload = () => {
+    // Implement your upload logic here
+    handleClose();
+  };
+
   return (
     <ShareContainer>
       <ShareWrapper>
@@ -95,11 +118,11 @@ export default function Share() {
         <ShareHr />
         <ShareBottom>
           <ShareOptions>
-            <ShareOption>
+            <ShareOption onClick={handleMp3Open}>
               <MusicNoteIcon htmlColor="brown" className="shareIcon" />
               <ShareOptionText>Composition</ShareOptionText>
             </ShareOption>
-            <ShareOption>
+            <ShareOption onClick={handlePdfOpen}>
               <NotesIcon htmlColor="brown" className="shareIcon" />
               <ShareOptionText> Lyrics</ShareOptionText>
             </ShareOption>
@@ -107,6 +130,8 @@ export default function Share() {
           <ShareButton>Share</ShareButton>
         </ShareBottom>
       </ShareWrapper>
+      <UploadDialog open={pdfOpen} onClose={handleClose} onUpload={handleUpload} fileType="pdf" />
+      <UploadDialog open={mp3Open} onClose={handleClose} onUpload={handleUpload} fileType="mp3" />
     </ShareContainer>
   );
 }

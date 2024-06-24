@@ -24,7 +24,7 @@ import OnBoarding1 from './pages/on_boarding/OnBoarding';
  
 //2 Tests
 function App() {
-  return <Home/>;
+  return <Profile/>;
 }
 
 export default App;

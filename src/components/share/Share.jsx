@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { PermMedia, Label, Room, EmojiEmotions } from '@mui/icons-material';
 import MusicNoteIcon from '@mui/icons-material/MusicNote';
 import NotesIcon from '@mui/icons-material/Notes';
-import UploadDialog from '../uploadDialog/UploadDialog';
+import UploadDialog from '../uploadDialog//UploadDialog'
 
 // Define styled components
 const ShareContainer = styled.div`
@@ -86,9 +86,10 @@ const ShareButton = styled.button`
   color: white;
 `;
 
-export default function Share() {
+export default function Share({ addNewPost }) {
   const [pdfOpen, setPdfOpen] = useState(false);
   const [mp3Open, setMp3Open] = useState(false);
+  const [description, setDescription] = useState('');
 
   const handlePdfOpen = () => {
     setPdfOpen(true);
@@ -108,12 +109,30 @@ export default function Share() {
     handleClose();
   };
 
+  const handleShare = () => {
+    const newPost = {
+      id: Date.now(),
+      desc: description,
+      photo: "", // Update with the file URL if needed
+      date: new Date().toISOString(),
+      userId: 1, // Use the appropriate user ID
+      like: 0,
+      comment: 0,
+    };
+    addNewPost(newPost);
+    setDescription('');
+  };
+
   return (
     <ShareContainer>
       <ShareWrapper>
         <ShareTop>
           <ShareProfileImg src="/assets/person/1.jpeg" alt="" />
-          <ShareInput placeholder="Write a description" />
+          <ShareInput
+            placeholder="Write a description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
         </ShareTop>
         <ShareHr />
         <ShareBottom>
@@ -127,7 +146,7 @@ export default function Share() {
               <ShareOptionText> Lyrics</ShareOptionText>
             </ShareOption>
           </ShareOptions>
-          <ShareButton>Share</ShareButton>
+          <ShareButton onClick={handleShare}>Share</ShareButton>
         </ShareBottom>
       </ShareWrapper>
       <UploadDialog open={pdfOpen} onClose={handleClose} onUpload={handleUpload} fileType="pdf" />

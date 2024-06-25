@@ -3,14 +3,14 @@ import Login from "./pages/login/Login";
 import Profile from "./pages/profile/Profile";
 import Register from "./pages/register/Register";
 import ChatPage from "./pages/chat/ChatPage";
-
+import Inbox from "./pages/inbox/Inbox";
 
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import OnBoarding1 from './pages/on_boarding/OnBoarding';
 
 
-//1 Real Future App
+// // 1Real Future App
 // export default function App() {
 //   return (
 //     <Router>
@@ -24,7 +24,7 @@ import OnBoarding1 from './pages/on_boarding/OnBoarding';
  
 //2 Tests
 function App() {
-  return <Profile/>;
+  return <Inbox/>;
 }
 
 export default App;

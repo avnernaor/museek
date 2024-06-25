@@ -97,10 +97,49 @@ const ReadMoreContainer = styled.div`
   cursor: pointer;
 `;
 
+const CommentInputContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+`;
+
+const CommentInput = styled.input`
+  flex: 1;
+  border: none;
+  border-radius: 20px;
+  padding: 10px;
+  background-color: #f1f1f1;
+  margin-bottom: 10px;
+
+  &:focus {
+    outline: none;
+  }
+`;
+
+const FileInput = styled.input`
+  margin-bottom: 10px;
+`;
+
+const CommentButton = styled.button`
+  border: none;
+  background-color: #6d4c41; /* Medium brown background */
+  color: white;
+  padding: 10px;
+  border-radius: 20px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #5d4037; /* Dark brown background */
+  }
+`;
+
 export default function Post({ post }) {
   const [like, setLike] = useState(post.like);
   const [isLiked, setIsLiked] = useState(false);
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [comment, setComment] = useState('');
+  const [comments, setComments] = useState([]);
+  const [pdfFile, setPdfFile] = useState(null);
 
   const likeHandler = () => {
     setLike(isLiked ? like - 1 : like + 1);
@@ -113,6 +152,22 @@ export default function Post({ post }) {
 
   const handleDialogClose = () => {
     setDialogOpen(false);
+  };
+
+  const handleCommentChange = (e) => {
+    setComment(e.target.value);
+  };
+
+  const handleFileChange = (e) => {
+    setPdfFile(e.target.files[0]);
+  };
+
+  const handleCommentSubmit = () => {
+    if (comment.trim() || pdfFile) {
+      setComments([...comments, { text: comment, file: pdfFile }]);
+      setComment('');
+      setPdfFile(null);
+    }
   };
 
   return (
@@ -147,6 +202,20 @@ export default function Post({ post }) {
             <PostLikeCounter>{like} people like it</PostLikeCounter>
           </PostBottomLeft>
         </PostBottom>
+        <CommentInputContainer>
+          <CommentInput
+            type="text"
+            placeholder="Write a comment..."
+            value={comment}
+            onChange={handleCommentChange}
+          />
+          <FileInput
+            type="file"
+            accept="application/pdf"
+            onChange={handleFileChange}
+          />
+          <CommentButton onClick={handleCommentSubmit}>Comment</CommentButton>
+        </CommentInputContainer>
       </PostWrapper>
       <AlertDialogSlide open={dialogOpen} handleClose={handleDialogClose} />
     </PostContainer>

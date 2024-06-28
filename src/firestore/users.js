@@ -8,6 +8,8 @@ export const signUpWithGoogle = async () => {
         const result = await signInWithPopup(auth, provider);
         const user = result.user;
 
+        // TODO : check if getting photoURL from auth
+
         // Create user object
         const userObj = {
             displayName: user.displayName,
@@ -18,6 +20,7 @@ export const signUpWithGoogle = async () => {
             favorites: [],
             genres: [],
             userType: ""
+            // TODO : optional to add comments array with references (pid, cid)
         };
 
         // Add user to Firestore
@@ -65,6 +68,7 @@ export const updateUserBio = async (uid, bio) => {
 };
 
 // Function to update user's posts
+// TODO : split to add and remove
 export const updateUserPosts = async (uid, posts) => {
     try {
         const userRef = doc(db, "users", uid);
@@ -76,6 +80,7 @@ export const updateUserPosts = async (uid, posts) => {
 };
 
 // Function to update user's favorites
+// TODO : split to add and remove
 export const updateUserFavorites = async (uid, favorites) => {
     try {
         const userRef = doc(db, "users", uid);
@@ -140,6 +145,8 @@ export const deleteUser = async (uid) => {
             console.error("Error: No user is currently signed in or UID does not match.");
             throw new Error("No user is currently signed in or UID does not match.");
         }
+
+        // TODO : delete all posts created
 
         console.log("User deleted");
     } catch (e) {

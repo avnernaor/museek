@@ -79,18 +79,33 @@ export const updateUserPosts = async (uid, posts) => {
     }
 };
 
-// Function to update user's favorites
-// TODO : split to add and remove
-export const updateUserFavorites = async (uid, favorites) => {
+// Function to add a favorite to user's favorites
+export const addFavorite = async (uid, favorite) => {
     try {
         const userRef = doc(db, "users", uid);
-        await updateDoc(userRef, { favorites });
+        await updateDoc(userRef, {
+            favorites: arrayUnion(favorite)
+        });
+        console.log(`Added ${favorite} to favorites for user ${uid}`);
     } catch (e) {
-        console.error("Error updating favorites: ", e);
+        console.error("Error adding favorite: ", e);
         throw new Error(e.message);
     }
 };
 
+// Function to remove a favorite from user's favorites
+export const removeFavorite = async (uid, favorite) => {
+    try {
+        const userRef = doc(db, "users", uid);
+        await updateDoc(userRef, {
+            favorites: arrayRemove(favorite)
+        });
+        console.log(`Removed ${favorite} from favorites for user ${uid}`);
+    } catch (e) {
+        console.error("Error removing favorite: ", e);
+        throw new Error(e.message);
+    }
+};
 // Function to update user's genres
 export const updateUserGenres = async (uid, genres) => {
     try {
